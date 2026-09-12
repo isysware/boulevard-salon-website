@@ -1,0 +1,814 @@
+:root{--ivory:#F5F0E8;--copper:#A75E36;--taupe:#5B4F47;--espresso:#311C0C;--muted:#B29F93;--white:#fff;--line:rgba(167,94,54,.18);--max:1180px;--gutter:clamp(22px,4vw,54px)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--ivory);color:var(--taupe);font-family:'Montserrat',Arial,sans-serif;font-weight:300;overflow-x:hidden}a{color:inherit;text-decoration:none}.container{width:min(calc(100% - var(--gutter)*2),var(--max));margin:0 auto}
+.site-header{position:fixed;z-index:1000;left:0;right:0;top:0;background:rgba(245,240,232,.96);border-bottom:1px solid rgba(178,159,147,.28);backdrop-filter:blur(8px)}
+.header-inner{height:84px;display:grid;grid-template-columns:minmax(220px,1fr) auto minmax(220px,1fr);align-items:center;gap:30px}
+.brand{font-family:'Bodoni Moda',Didot,Georgia,serif;color:var(--copper);font-size:38px;line-height:.9}.brand small{display:block;color:var(--taupe);font-size:11px;letter-spacing:.24em;margin-top:6px}
+.main-nav{display:flex;gap:30px;align-items:center}.main-nav a{font-family:'Bodoni Moda',serif;font-size:14px;position:relative;padding:10px 0}.main-nav a::after{content:'';position:absolute;height:1px;left:0;right:0;bottom:4px;background:var(--copper);transform:scaleX(0);transition:.3s}.main-nav a:hover::after,.main-nav a.active::after{transform:scaleX(1)}.header-actions{display:flex;justify-content:flex-end}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 22px;border:1px solid var(--copper);font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;transition:.3s;cursor:pointer}.btn-primary{background:var(--copper);color:#fff}.btn-primary:hover{background:var(--espresso);border-color:var(--espresso)}
+.contact-hero{height:clamp(520px,68svh,660px);min-height:520px;padding-top:84px;position:relative;color:#fff;background-image:linear-gradient(180deg,rgba(49,28,12,.20),rgba(49,28,12,.42)),url("/assets/images/image_3.webp");background-size:cover;background-position:center center}
+.contact-hero-inner{height:100%;display:flex;align-items:center;justify-content:center;text-align:center;padding:58px 0 44px}.contact-hero-content{width:min(100%,980px);margin:auto}.hero-kicker{font-size:12px;letter-spacing:.25em;text-transform:uppercase;margin-bottom:22px}.contact-hero h1{font-family:'Bodoni Moda',Didot,Georgia,serif;font-size:clamp(50px,5.4vw,80px);font-weight:400;line-height:1.03;margin:0 auto 20px;max-width:1040px}.contact-hero p{font-size:16px;line-height:1.8;margin:0 auto;max-width:720px;color:rgba(255,255,255,.92)}
+.contact-section{padding:84px 0 96px}.contact-grid{display:grid;grid-template-columns:.88fr 1.12fr;gap:26px;align-items:stretch}.contact-card{background:rgba(255,255,255,.82);border:1px solid rgba(167,94,54,.16);border-radius:18px;padding:34px 34px 30px;box-shadow:0 18px 50px rgba(49,28,12,.06)}.eyebrow{color:var(--copper);font-size:10px;font-weight:500;letter-spacing:.23em;text-transform:uppercase}.contact-card h2{font-family:'Bodoni Moda',Didot,Georgia,serif;color:var(--espresso);font-weight:400;font-size:42px;line-height:1;margin:15px 0 26px}
+.detail-row{padding:15px 0;border-bottom:1px solid rgba(178,159,147,.34)}.detail-row:last-child{border-bottom:0}.detail-label{display:block;color:var(--copper);font-size:9px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;margin-bottom:8px}.detail-value{font-family:'Bodoni Moda',Georgia,serif;font-size:18px;color:var(--espresso)}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px 16px}.field.full{grid-column:1/-1}label{display:block;color:var(--copper);font-size:9px;letter-spacing:.20em;text-transform:uppercase;font-weight:600;margin-bottom:8px}input,select,textarea{width:100%;border:1px solid rgba(178,159,147,.44);background:#fff;color:var(--espresso);border-radius:12px;padding:13px 14px;font-family:'Montserrat',sans-serif;font-size:12px;outline:none;transition:border-color .25s,box-shadow .25s}input,select{height:48px}textarea{min-height:112px;resize:vertical}input:focus,select:focus,textarea:focus{border-color:var(--copper);box-shadow:0 0 0 3px rgba(167,94,54,.08)}.submit-btn{width:100%;margin-top:14px;border:0;border-radius:999px;min-height:48px;background:var(--copper);color:#fff;font-size:10px;font-weight:600;letter-spacing:.20em;text-transform:uppercase;cursor:pointer;transition:.3s}.submit-btn:hover{background:var(--espresso);transform:translateY(-1px)}.form-note{font-size:11px;line-height:1.6;margin-top:12px;color:var(--muted)}.success{display:none;margin-top:12px;padding:12px 14px;border:1px solid rgba(167,94,54,.22);border-radius:10px;background:rgba(245,240,232,.8);font-size:12px;color:var(--espresso)}
+.footer{background:var(--espresso);color:rgba(255,255,255,.72);padding:34px 0}.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:20px}.footer-brand{font-family:'Bodoni Moda',serif;font-size:30px;color:#fff}.footer p{margin:0;font-size:10px;letter-spacing:.14em;text-transform:uppercase}
+@media(max-width:900px){.header-inner{grid-template-columns:1fr auto}.main-nav{display:none}.contact-grid{grid-template-columns:1fr}.contact-hero{height:clamp(500px,66svh,600px);min-height:500px}}
+@media(max-width:620px){.header-inner{height:76px}.brand{font-size:31px}.header-actions .btn{padding:0 14px}.contact-hero{padding-top:76px}.contact-hero h1{font-size:44px}.contact-hero p{font-size:14px}.contact-section{padding:62px 0 72px}.contact-card{padding:26px 22px}.contact-card h2{font-size:36px}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.footer-inner{align-items:flex-start;flex-direction:column}}
+
+/* Logo position adjustment */
+.site-header .brand{transform:translateX(32px) !important;}
+@media(max-width:760px){.site-header .brand{transform:translateX(14px) !important;}}
+
+/* --- Next Style Block --- */
+
+.global-book-btn{
+  transform:translateX(-28px) !important;
+  display:inline-flex !important;align-items:center !important;justify-content:center !important;
+  min-height:48px !important;padding:0 26px !important;border-radius:999px !important;
+  background:#A75E36 !important;border:1px solid #A75E36 !important;color:#FFFFFF !important;
+  font-size:11px !important;line-height:1 !important;letter-spacing:.18em !important;
+  text-transform:uppercase !important;font-weight:600 !important;white-space:nowrap !important;
+  box-shadow:none !important;transition:transform .3s ease,background .3s ease,border-color .3s ease !important;
+}
+.global-book-btn:hover{background:#311C0C !important;border-color:#311C0C !important;color:#FFFFFF !important;transform:translateY(-1px) !important;}
+
+/* --- Next Style Block --- */
+
+/* Final consistency pass: same header/navigation on every internal page */
+.site-header{
+  box-sizing:border-box !important;
+  background:rgba(245,240,232,.97) !important;
+  border-bottom:1px solid rgba(178,159,147,.24) !important;
+  backdrop-filter:blur(10px) !important;
+  -webkit-backdrop-filter:blur(10px) !important;
+}
+.site-header .header-inner{
+  height:88px !important;
+  min-height:88px !important;
+  display:grid !important;
+  grid-template-columns:minmax(220px,1fr) auto minmax(220px,1fr) !important;
+  align-items:center !important;
+  gap:28px !important;
+  position:relative !important;
+}
+.site-header .brand{
+  justify-self:start !important;
+  color:#A75E36 !important;
+  font-family:'Bodoni Moda',Didot,'Bodoni MT',Georgia,serif !important;
+  font-size:36px !important;
+  font-weight:400 !important;
+  line-height:.9 !important;
+  letter-spacing:.015em !important;
+  text-decoration:none !important;
+}
+.site-header .brand-main{font-size:36px !important;line-height:.9 !important;}
+.site-header .brand-sub,
+.site-header .brand small{
+  display:block !important;
+  margin-top:7px !important;
+  color:#5B4F47 !important;
+  font-family:'Bodoni Moda',Didot,'Bodoni MT',Georgia,serif !important;
+  font-size:11px !important;
+  font-weight:400 !important;
+  line-height:1 !important;
+  letter-spacing:.20em !important;
+}
+.site-header .main-nav,
+.site-header .nav{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:34px !important;
+  justify-self:center !important;
+}
+.site-header .main-nav a,
+.site-header .nav a{
+  position:relative !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  min-height:42px !important;
+  padding:0 !important;
+  color:#5B4F47 !important;
+  font-family:'Bodoni Moda',Didot,'Bodoni MT',Georgia,serif !important;
+  font-size:14px !important;
+  font-weight:400 !important;
+  line-height:1 !important;
+  letter-spacing:.035em !important;
+  text-transform:none !important;
+  white-space:nowrap !important;
+  text-decoration:none !important;
+  transition:color .28s ease !important;
+}
+.site-header .main-nav a::after,
+.site-header .nav a::after{
+  content:'' !important;
+  position:absolute !important;
+  left:0 !important;
+  right:0 !important;
+  bottom:6px !important;
+  width:100% !important;
+  height:1px !important;
+  background:#A75E36 !important;
+  transform:scaleX(0) !important;
+  transform-origin:right center !important;
+  transition:transform .28s ease !important;
+}
+.site-header .main-nav a:hover,
+.site-header .main-nav a.active,
+.site-header .nav a:hover,
+.site-header .nav a.active{color:#A75E36 !important;}
+.site-header .main-nav a:hover::after,
+.site-header .main-nav a.active::after,
+.site-header .nav a:hover::after,
+.site-header .nav a.active::after{
+  transform:scaleX(1) !important;
+  transform-origin:left center !important;
+}
+.site-header .header-actions{justify-self:end !important;display:flex !important;align-items:center !important;}
+.site-header .global-book-btn{
+  justify-self:end !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  min-height:46px !important;
+  padding:0 24px !important;
+  border:1px solid #A75E36 !important;
+  border-radius:999px !important;
+  background:#A75E36 !important;
+  color:#FFFFFF !important;
+  font-family:'Poppins',Arial,sans-serif !important;
+  font-size:10px !important;
+  font-weight:600 !important;
+  line-height:1 !important;
+  letter-spacing:.18em !important;
+  text-transform:uppercase !important;
+  white-space:nowrap !important;
+  box-shadow:none !important;
+  text-decoration:none !important;
+  transition:background .28s ease,border-color .28s ease,transform .28s ease !important;
+}
+.site-header .global-book-btn:hover{
+  background:#311C0C !important;
+  border-color:#311C0C !important;
+  color:#FFFFFF !important;
+  transform:translateY(-1px) !important;
+}
+/* Avoid accidental horizontal jumps and image overflow */
+html,body{max-width:100% !important;overflow-x:hidden !important;background:#F5F0E8 !important;}
+img{max-width:100%;}
+@media(max-width:1050px){
+  .site-header .header-inner{
+    grid-template-columns:1fr auto !important;
+    height:78px !important;
+    min-height:78px !important;
+  }
+  .site-header .main-nav,
+  .site-header .nav{
+    position:absolute !important;
+    top:78px !important;
+    left:0 !important;
+    right:0 !important;
+    height:44px !important;
+    display:flex !important;
+    justify-content:center !important;
+    gap:22px !important;
+    padding:0 18px !important;
+    background:rgba(245,240,232,.985) !important;
+    border-bottom:1px solid rgba(178,159,147,.22) !important;
+  }
+  .site-header .main-nav a,.site-header .nav a{font-size:12px !important;min-height:44px !important;}
+  .site-header .brand,.site-header .brand-main{font-size:31px !important;}
+  .site-header .global-book-btn{min-height:42px !important;padding:0 18px !important;font-size:9px !important;}
+}
+@media(max-width:620px){
+  .site-header .main-nav,.site-header .nav{gap:14px !important;padding:0 10px !important;overflow-x:auto !important;justify-content:flex-start !important;}
+  .site-header .main-nav a,.site-header .nav a{font-size:11px !important;flex:0 0 auto !important;}
+  .site-header .brand,.site-header .brand-main{font-size:27px !important;}
+  .site-header .brand-sub,.site-header .brand small{font-size:9px !important;}
+  .site-header .global-book-btn{display:none !important;}
+}
+
+/* --- Next Style Block --- */
+
+.site-footer{background:#26150B;color:#F5F0E8;padding:60px 0 24px;margin-top:0;}
+.site-footer .container{width:min(1240px,calc(100% - 48px));margin:0 auto;}
+.site-footer .footer-grid{display:grid;grid-template-columns:1.25fr .7fr .85fr .95fr;gap:54px;}
+.site-footer .footer-brand .brand{display:inline-flex;flex-direction:column;text-decoration:none;color:#fff;}
+.site-footer .footer-brand .brand-main{font-family:'Bodoni Moda',Didot,'Bodoni MT',Georgia,serif;color:#fff;font-size:37px;line-height:1;letter-spacing:.02em;}
+.site-footer .footer-brand .brand-sub{font-family:'Bodoni Moda',Didot,'Bodoni MT',Georgia,serif;color:#F5F0E8;font-size:13px;letter-spacing:.16em;margin-top:7px;}
+.site-footer .footer-brand p{font-size:12px;line-height:1.85;max-width:315px;color:rgba(245,240,232,.72);margin:20px 0 0;}
+.site-footer .footer-col h4{font-family:'Poppins',Montserrat,Arial,sans-serif;font-size:10px;letter-spacing:.20em;text-transform:uppercase;color:#fff;margin:0 0 20px;font-weight:500;}
+.site-footer .footer-col a,.site-footer .footer-col span{display:block;text-decoration:none;font-family:'Poppins',Montserrat,Arial,sans-serif;font-size:12px;color:rgba(245,240,232,.76);margin:0 0 13px;line-height:1.6;transition:color .25s ease;}
+.site-footer .footer-col a:hover,.site-footer .footer-col a.active{color:#A75E36;}
+.site-footer .footer-bottom{border-top:1px solid rgba(178,159,147,.25);margin-top:42px;padding-top:20px;display:flex;justify-content:space-between;gap:20px;font-size:10px;color:rgba(245,240,232,.55);letter-spacing:.04em;}
+@media(max-width:900px){.site-footer .footer-grid{grid-template-columns:1fr 1fr;gap:34px}.site-footer .footer-brand{grid-column:1/-1}.site-footer .footer-bottom{flex-direction:column}}
+@media(max-width:600px){.site-footer{padding:48px 0 22px}.site-footer .container{width:min(100% - 28px,1240px)}.site-footer .footer-grid{grid-template-columns:1fr}.site-footer .footer-brand{grid-column:auto}}
+
+/* --- Next Style Block --- */
+
+/* Shared uploaded Boulevard banner — existing compact contact hero dimensions are preserved. */
+.contact-hero {
+  background-image:
+    linear-gradient(180deg, rgba(31,20,13,.28), rgba(31,20,13,.44)),
+    url("/assets/images/image_4.webp") !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+}
+
+/* --- Next Style Block --- */
+
+/* ===== Boulevard Responsive Stability Patch ===== */
+html,body{width:100%;max-width:100%;overflow-x:hidden}
+*,*::before,*::after{box-sizing:border-box}
+img,video,svg,canvas{max-width:100%;height:auto}
+iframe{max-width:100%}
+button,input,select,textarea{max-width:100%;font:inherit}
+.container{width:min(1240px,calc(100% - 48px));max-width:100%;margin-left:auto;margin-right:auto}
+.site-header{width:100%;max-width:100%;overflow:visible}
+.header-inner{width:100%;max-width:100%;min-width:0}
+.brand,.brand-main,.brand-sub,.brand small{min-width:0}
+.main-nav,.nav{min-width:0}
+.main-nav a,.nav a{white-space:nowrap}
+.mobile-nav-toggle{display:none;width:44px;height:44px;border:0;background:transparent;padding:8px;cursor:pointer;justify-self:end;flex:0 0 auto}
+.mobile-nav-toggle span{display:block;height:2px;background:currentColor;margin:6px 0;transition:.25s}
+.mobile-nav-panel{display:none}
+@media (max-width:1050px){
+  .container{width:min(100% - 36px,1240px)}
+  .header-inner{grid-template-columns:minmax(0,1fr) auto!important;gap:14px!important;height:78px!important}
+  .site-header .main-nav,.site-header .nav{display:none!important}
+  .site-header .header-actions,.site-header .global-book-btn{max-width:42vw}
+  .mobile-nav-toggle{display:block}
+  .mobile-nav-panel{
+    position:absolute;top:78px;left:0;right:0;z-index:1001;
+    display:none;flex-direction:column;gap:0;
+    padding:10px 18px 18px;background:rgba(245,240,232,.985);
+    border-bottom:1px solid rgba(178,159,147,.28);
+    box-shadow:0 12px 28px rgba(49,28,12,.08);
+  }
+  .mobile-nav-panel.open{display:flex}
+  .mobile-nav-panel a{
+    display:block;padding:14px 4px;border-bottom:1px solid rgba(178,159,147,.22);
+    font-family:'Bodoni Moda',Didot,Georgia,serif;font-size:18px;line-height:1.2;
+    color:var(--espresso,#311C0C);text-decoration:none
+  }
+  .mobile-nav-panel .global-book-btn{
+    width:100%;max-width:none;margin-top:14px;justify-content:center;
+    border-bottom:0
+  }
+  .hero,.contact-hero{max-width:100%;overflow:hidden}
+}
+@media (max-width:760px){
+  .container{width:calc(100% - 32px)}
+  .header-inner{height:74px!important}
+  .mobile-nav-panel{top:74px}
+  .site-header .brand,.site-header .brand-main{font-size:clamp(25px,8vw,32px)!important;line-height:1}
+  .site-header .brand-sub,.site-header .brand small{font-size:9px!important;letter-spacing:.16em}
+  .site-header .header-actions .global-book-btn,.site-header>.header-inner>.global-book-btn{display:none!important}
+  .section,.contact-section,.about-intro,.story-list,.menu-section,.intro{padding-left:0;padding-right:0}
+  .section-head,.contact-grid,.story-row,.story-row.reverse,.contact-grid,.form-grid,.pricing-grid,.service-grid,.signature-grid,.editorial-grid,.editorial-collage{
+    max-width:100%;
+  }
+  .contact-grid,.story-row,.story-row.reverse,.form-grid{grid-template-columns:1fr!important}
+  .service-grid,.signature-grid,.editorial-grid{grid-template-columns:1fr!important}
+  .section-head{grid-template-columns:1fr!important}
+  .hero{height:auto!important;min-height:620px!important;padding-top:74px!important}
+  .hero h1,.contact-hero h1{font-size:clamp(34px,10vw,50px)!important;line-height:1.06}
+  .hero p,.contact-hero p{font-size:14px;line-height:1.65}
+  .hero-actions,.header-actions{flex-wrap:wrap}
+  .btn{min-height:46px}
+  .form-grid>*{min-width:0}
+  table{display:block;width:100%;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .service-row,.service-row-item{min-width:0}
+  .service-row-item{grid-template-columns:1fr!important}
+  .service-price{text-align:left!important}
+  .story-image,.story-row.compact .story-image,.intro-image{max-width:100%}
+  .footer-grid{grid-template-columns:1fr!important}
+}
+@media (max-width:480px){
+  .container{width:calc(100% - 28px)}
+  .mobile-nav-panel{padding-left:14px;padding-right:14px}
+  .mobile-nav-panel a{font-size:17px;padding:13px 2px}
+  .hero h1,.contact-hero h1{font-size:clamp(32px,11vw,44px)!important}
+  .hero p,.contact-hero p{font-size:13px}
+  .hero-actions .btn,.contact-section .btn{width:100%;max-width:100%}
+  input,select,textarea{width:100%;min-width:0}
+  .contact-card,.story-copy{max-width:100%;overflow:hidden}
+}
+@media (prefers-reduced-motion:reduce){
+  .mobile-nav-toggle span{transition:none}
+}
+@media (max-width: 900px){.site-header .global-book-btn{transform:none !important;}}
+
+/* --- Next Style Block --- */
+
+/* FINAL CLEAN MOBILE RESPONSIVE OVERRIDE — desktop/tablet above 760px unchanged */
+@media (max-width:760px){
+  html,body{width:100%!important;max-width:100%!important;overflow-x:hidden!important;-webkit-text-size-adjust:100%;}
+  *,*::before,*::after{box-sizing:border-box;}
+  img,video,svg,canvas,iframe{max-width:100%!important;}
+  img,video{height:auto;}
+
+  /* Header: hamburger LEFT, logo truly CENTERED, no desktop button/nav */
+  .site-header{width:100%!important;max-width:100%!important;overflow:visible!important;}
+  .site-header .header-inner,
+  .header-inner{
+    width:calc(100% - 28px)!important;
+    max-width:none!important;
+    height:76px!important;
+    min-height:76px!important;
+    margin:0 auto!important;
+    padding:0!important;
+    display:grid!important;
+    grid-template-columns:44px minmax(0,1fr) 44px!important;
+    grid-template-rows:76px!important;
+    align-items:center!important;
+    gap:0!important;
+    position:relative!important;
+  }
+  .site-header.scrolled .header-inner{height:70px!important;min-height:70px!important;grid-template-rows:70px!important;}
+
+  .site-header .brand,
+  .header-inner>.brand{
+    grid-column:2!important;
+    grid-row:1!important;
+    justify-self:center!important;
+    align-self:center!important;
+    align-items:center!important;
+    text-align:center!important;
+    width:max-content!important;
+    max-width:calc(100vw - 120px)!important;
+    margin:0!important;
+    padding:0!important;
+    transform:none!important;
+    line-height:1!important;
+    overflow:visible!important;
+  }
+  .site-header .brand-main,
+  .header-inner>.brand:not(:has(.brand-main)){
+    font-size:clamp(28px,8.4vw,33px)!important;
+    line-height:.92!important;
+    letter-spacing:.01em!important;
+    white-space:nowrap!important;
+  }
+  .site-header .brand-sub,
+  .site-header .brand small,
+  .header-inner>.brand small{
+    display:block!important;
+    margin-top:6px!important;
+    font-size:9px!important;
+    line-height:1!important;
+    letter-spacing:.20em!important;
+    text-align:center!important;
+    white-space:nowrap!important;
+  }
+
+  .site-header .main-nav,.site-header .nav,
+  .site-header .header-actions,
+  .header-inner>.global-book-btn{display:none!important;}
+
+  .menu-toggle,.mobile-nav-toggle{
+    display:block!important;
+    grid-column:1!important;
+    grid-row:1!important;
+    justify-self:start!important;
+    align-self:center!important;
+    width:40px!important;
+    height:40px!important;
+    min-width:40px!important;
+    margin:0!important;
+    padding:8px!important;
+    border:0!important;
+    background:transparent!important;
+    color:#311C0C!important;
+    transform:none!important;
+    z-index:3!important;
+  }
+  .menu-toggle span,.mobile-nav-toggle span{
+    display:block!important;
+    width:24px!important;
+    height:1.5px!important;
+    margin:5px 0!important;
+    background:#311C0C!important;
+  }
+
+  .mobile-menu,.mobile-nav-panel{
+    position:fixed!important;
+    top:76px!important;
+    left:0!important;
+    right:0!important;
+    width:100%!important;
+    max-width:100vw!important;
+    max-height:calc(100dvh - 76px)!important;
+    overflow-y:auto!important;
+    overflow-x:hidden!important;
+    z-index:9999!important;
+    padding:12px 18px 20px!important;
+    background:rgba(245,240,232,.99)!important;
+    border-bottom:1px solid rgba(178,159,147,.3)!important;
+    box-shadow:0 12px 28px rgba(49,28,12,.10)!important;
+  }
+  .site-header.scrolled .mobile-menu{top:70px!important;max-height:calc(100dvh - 70px)!important;}
+  .mobile-menu:not(.open),.mobile-nav-panel:not(.open){display:none!important;}
+  .mobile-menu.open,.mobile-nav-panel.open{display:flex!important;flex-direction:column!important;gap:0!important;}
+  .mobile-menu a,.mobile-nav-panel a{
+    display:block!important;
+    width:100%!important;
+    padding:14px 2px!important;
+    font-size:18px!important;
+    line-height:1.25!important;
+    border-bottom:1px solid rgba(178,159,147,.22)!important;
+    text-align:left!important;
+    white-space:normal!important;
+  }
+  .mobile-menu .global-book-btn,.mobile-nav-panel .global-book-btn,
+  .mobile-menu .btn,.mobile-nav-panel .btn{
+    display:flex!important;
+    width:100%!important;
+    max-width:none!important;
+    min-height:46px!important;
+    margin-top:14px!important;
+    justify-content:center!important;
+    align-items:center!important;
+    border-bottom:0!important;
+    text-align:center!important;
+  }
+
+  /* Main content safety */
+  .container{width:calc(100% - 28px)!important;max-width:100%!important;margin-left:auto!important;margin-right:auto!important;}
+  main,section,footer{max-width:100vw!important;overflow-x:hidden;}
+  h1,h2,h3,h4,p,a,span{overflow-wrap:break-word;}
+  .hero,.contact-hero{padding-top:76px!important;max-width:100%!important;overflow:hidden!important;}
+  .hero-inner,.contact-hero .container{max-width:100%!important;}
+  .hero h1,.contact-hero h1{font-size:clamp(34px,10vw,48px)!important;line-height:1.06!important;}
+  .hero p,.contact-hero p{font-size:14px!important;line-height:1.65!important;}
+
+  .signature-grid,.service-grid,.editorial-grid,.contact-grid,.form-grid,.story-row,.story-row.reverse,.intro-grid,.pricing-grid,.section-head{
+    grid-template-columns:minmax(0,1fr)!important;
+    max-width:100%!important;
+  }
+  .story-row,.story-row.reverse{display:grid!important;}
+  .signature-image,.service-image,.story-image,.intro-image,.editorial-collage{max-width:100%!important;}
+  .form-grid>*,.contact-grid>*,.service-grid>*,.story-row>*{min-width:0!important;}
+  input,select,textarea,button{max-width:100%!important;}
+  input,select,textarea{width:100%!important;min-width:0!important;}
+  .btn,a.btn{max-width:100%!important;white-space:normal!important;text-align:center!important;}
+  table{display:block!important;width:100%!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch;}
+  .footer-grid{grid-template-columns:minmax(0,1fr)!important;}
+  .footer-bottom,.footer-inner{flex-direction:column!important;align-items:flex-start!important;}
+}
+
+@media (max-width:380px){
+  .site-header .header-inner,.header-inner{width:calc(100% - 20px)!important;grid-template-columns:40px minmax(0,1fr) 40px!important;}
+  .site-header .brand-main,.header-inner>.brand:not(:has(.brand-main)){font-size:clamp(25px,8.2vw,30px)!important;}
+  .site-header .brand-sub,.site-header .brand small{font-size:8px!important;letter-spacing:.16em!important;}
+  .container{width:calc(100% - 24px)!important;}
+  .hero h1,.contact-hero h1{font-size:clamp(31px,10.5vw,42px)!important;}
+}
+
+/* --- Next Style Block --- */
+
+.admin-panel-btn{margin-left:10px}
+.mobile-menu .admin-panel-btn,.mobile-nav-panel .admin-panel-btn{margin-left:0;margin-top:10px}
+
+/* --- Next Style Block --- */
+
+.contact-map-wrap{
+  width:min(calc(100% - var(--gutter)*2),var(--max));
+  margin:34px auto 0;
+}
+.contact-map-card{
+  overflow:hidden;
+  background:#fff;
+  border:1px solid rgba(178,159,147,.30);
+  border-radius:18px;
+}
+.contact-map-head{
+  padding:19px 24px 14px;
+  background:rgba(255,255,255,.72);
+}
+.contact-map-head .eyebrow{margin-bottom:10px;}
+.contact-map-head h2{
+  margin:0 0 8px;
+  font-family:'Bodoni Moda',Didot,Georgia,serif;
+  font-size:clamp(27px,2.6vw,36px);
+  font-weight:400;
+  line-height:1.05;
+  color:var(--espresso);
+}
+.contact-map-head p{
+  margin:0;
+  font-size:13px;
+  line-height:1.7;
+  color:var(--taupe);
+}
+.contact-map-frame{
+  width:100%;
+  height:300px;
+  border:0;
+  display:block;
+}
+@media(max-width:760px){
+  .contact-map-wrap{margin-top:22px;}
+  .contact-map-card{border-radius:14px;}
+  .contact-map-head{padding:20px 18px 15px;}
+  .contact-map-head h2{font-size:30px;}
+  .contact-map-frame{height:235px;}
+}
+
+/* --- Next Style Block --- */
+
+.footer-socials{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-top:18px;
+}
+.footer-socials a{
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  border:1px solid rgba(167,94,54,.42);
+  color:var(--copper,#A75E36);
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  transition:background .2s ease,color .2s ease,transform .2s ease;
+}
+.footer-socials a:hover{
+  background:var(--copper,#A75E36);
+  color:#fff;
+  transform:translateY(-2px);
+}
+.footer-socials svg{
+  width:18px;
+  height:18px;
+  display:block;
+  fill:currentColor;
+}
+@media(max-width:760px){
+  .footer-socials a{width:36px;height:36px;}
+}
+
+/* --- Next Style Block --- */
+
+.detail-value a{
+  color:inherit;
+  text-decoration:none;
+}
+.detail-value a:hover{
+  color:var(--copper);
+}
+
+/* --- Next Style Block --- */
+
+.site-header .header-inner{
+  display:grid!important;
+  grid-template-columns:minmax(245px,1fr) auto minmax(300px,1fr)!important;
+  align-items:center!important;
+}
+.site-header .brand{justify-self:start!important;}
+.site-header .main-nav{justify-self:center!important;}
+.site-header .header-actions{
+  justify-self:end!important;
+  width:300px!important;
+  min-width:300px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:0!important;
+}
+.site-header .header-actions .global-book-btn{
+  width:185px!important;
+  min-width:185px!important;
+  max-width:185px!important;
+  height:48px!important;
+  min-height:48px!important;
+  margin:0!important;
+  transform:none!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  box-sizing:border-box!important;
+  white-space:nowrap!important;
+}
+@media(max-width:1050px){
+  .site-header .header-inner{
+    grid-template-columns:minmax(0,1fr) auto!important;
+  }
+  .site-header .header-actions{display:none!important;}
+}
+
+/* --- Next Style Block --- */
+
+/* Slightly stronger Contact Details typography to balance the booking form */
+.contact-info .eyebrow,
+.contact-details .detail-label,
+.detail-row .detail-label{
+  font-weight:600!important;
+}
+.contact-info h2,
+.contact-info .section-title{
+  font-weight:500!important;
+}
+.contact-details .detail-value,
+.detail-row .detail-value,
+.contact-details .detail-value a,
+.detail-row .detail-value a{
+  font-weight:500!important;
+}
+.contact-details .detail-value,
+.detail-row .detail-value{
+  line-height:1.65!important;
+}
+
+/* --- Next Style Block --- */
+
+.footer-socials a{
+  color:#fff!important;
+  border-color:rgba(255,255,255,.58)!important;
+  background:transparent!important;
+}
+.footer-socials a:hover{
+  color:#fff!important;
+  background:rgba(255,255,255,.12)!important;
+  border-color:#fff!important;
+}
+.footer-socials svg{
+  fill:currentColor!important;
+}
+
+/* --- Next Style Block --- */
+
+.site-header .header-inner{
+  width:min(calc(100% - 72px),var(--max))!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+  padding-left:0!important;
+  padding-right:0!important;
+  box-sizing:border-box!important;
+}
+
+#experience.home-redesign-section,
+#editorial-beauty.home-redesign-section{
+  padding:38px 0!important;
+  margin:0!important;
+}
+#experience .container,
+#editorial-beauty .container{
+  width:min(calc(100% - 88px),var(--max))!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+  padding-left:0!important;
+  padding-right:0!important;
+  box-sizing:border-box!important;
+}
+#experience .home-redesign-shell,
+#editorial-beauty .home-redesign-shell{
+  margin:0!important;
+  width:100%!important;
+}
+#experience .hrf1-copy{
+  padding:32px 38px 30px!important;
+}
+#editorial-beauty .home-redesign-shell{
+  padding:16px!important;
+  gap:16px!important;
+}
+#editorial-beauty .hrf2-copy{
+  padding:30px 30px 28px 34px!important;
+}
+
+.site-footer{
+  padding:58px 0 30px!important;
+  margin-top:34px!important;
+}
+.site-footer > .container,
+.site-footer .container{
+  width:min(calc(100% - 88px),var(--max))!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+  padding-left:0!important;
+  padding-right:0!important;
+  box-sizing:border-box!important;
+}
+.site-footer .footer-grid{
+  gap:46px!important;
+}
+.site-footer .footer-bottom{
+  margin-top:38px!important;
+  padding-top:20px!important;
+  padding-bottom:4px!important;
+}
+
+@media(max-width:1050px){
+  .site-header .header-inner{
+    width:calc(100% - 44px)!important;
+  }
+}
+@media(max-width:760px){
+  .site-header .header-inner{
+    width:calc(100% - 28px)!important;
+  }
+  #experience.home-redesign-section,
+  #editorial-beauty.home-redesign-section{
+    padding:24px 0!important;
+  }
+  #experience .container,
+  #editorial-beauty .container{
+    width:calc(100% - 32px)!important;
+  }
+  #experience .hrf1-copy,
+  #editorial-beauty .hrf2-copy{
+    padding:22px 18px 20px!important;
+  }
+  #editorial-beauty .home-redesign-shell{
+    padding:10px!important;
+    gap:10px!important;
+  }
+  .site-footer{
+    padding:42px 0 24px!important;
+    margin-top:24px!important;
+  }
+  .site-footer > .container,
+  .site-footer .container{
+    width:calc(100% - 32px)!important;
+  }
+  .site-footer .footer-grid{
+    gap:28px!important;
+  }
+  .site-footer .footer-bottom{
+    margin-top:28px!important;
+    padding-top:18px!important;
+  }
+}
+
+/* --- Next Style Block --- */
+
+/* Match Plan Your Visit typography to the Book Your Experience form */
+.contact-info,
+.contact-info *{
+  font-family:'Poppins','Montserrat',Arial,sans-serif!important;
+}
+
+.contact-info .eyebrow{
+  font-family:'Poppins','Montserrat',Arial,sans-serif!important;
+  font-size:10px!important;
+  font-weight:500!important;
+  letter-spacing:.20em!important;
+  text-transform:uppercase!important;
+  color:var(--copper,#A75E36)!important;
+}
+
+.contact-info h2,
+.contact-info .section-title{
+  font-family:'Bodoni Moda',Didot,'Bodoni MT',Georgia,serif!important;
+  font-size:clamp(34px,3.2vw,46px)!important;
+  font-weight:400!important;
+  line-height:1.02!important;
+  letter-spacing:-.02em!important;
+  color:var(--espresso,#311C0C)!important;
+}
+
+.contact-info .detail-label,
+.contact-details .detail-label,
+.detail-row .detail-label{
+  font-family:'Poppins','Montserrat',Arial,sans-serif!important;
+  font-size:9px!important;
+  font-weight:500!important;
+  letter-spacing:.18em!important;
+  text-transform:uppercase!important;
+  color:var(--copper,#A75E36)!important;
+}
+
+.contact-info .detail-value,
+.contact-details .detail-value,
+.detail-row .detail-value,
+.contact-info .detail-value a,
+.contact-details .detail-value a,
+.detail-row .detail-value a{
+  font-family:'Poppins','Montserrat',Arial,sans-serif!important;
+  font-size:13px!important;
+  font-weight:300!important;
+  line-height:1.75!important;
+  letter-spacing:0!important;
+  color:var(--taupe,#5B4F47)!important;
+}
+
+.contact-info .detail-row{
+  padding:16px 0!important;
+}
+
+@media(max-width:760px){
+  .contact-info h2,
+  .contact-info .section-title{
+    font-size:34px!important;
+  }
+  .contact-info .detail-value,
+  .contact-details .detail-value,
+  .detail-row .detail-value,
+  .contact-info .detail-value a,
+  .contact-details .detail-value a,
+  .detail-row .detail-value a{
+    font-size:12.5px!important;
+  }
+}

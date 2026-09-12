@@ -1,0 +1,9 @@
+/* Responsive & Overflow Protection */
+@media (max-width: 900px) {
+  .site-header .main-nav {
+    display: none !important;
+  }
+  .site-header .mobile-nav-toggle {
+    display: flex !important;
+  }
+}
